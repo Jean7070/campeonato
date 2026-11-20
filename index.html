@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campeonato Mensal — Casados x Solteiros</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <p class="eyebrow">Campeonato Mensal — Casados x Solteiros</p>
+      <h1>Campeonato Mensal — Casados x Solteiros</h1>
+      <p class="subtitle">Dois times fixos, partidas ilimitadas e classificação renovada a cada mês.</p>
+    </header>
+
+    <section class="card status-card">
+      <div>
+        <h2 id="titulo-mes">Campeonato atual</h2>
+        <p id="subtitulo-mes" class="muted"></p>
+      </div>
+      <span id="badge-status" class="badge badge-live">Em andamento</span>
+    </section>
+
+    <section class="grid-main">
+      <article class="card ranking-card">
+        <div class="card-head">
+          <h2>Classificação</h2>
+          <p class="muted">Pontos, saldo de gols e vitórias</p>
+        </div>
+        <div class="teams" id="cards-times"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>J</th>
+                <th>V</th>
+                <th>E</th>
+                <th>D</th>
+                <th>GP</th>
+                <th>GC</th>
+                <th>SG</th>
+                <th>Pts</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-classificacao"></tbody>
+          </table>
+        </div>
+        <p id="mensagem-lider" class="leader-note"></p>
+      </article>
+
+      <article class="card form-card">
+        <div class="card-head">
+          <h2>Registrar partida</h2>
+          <p class="muted">O resultado é calculado automaticamente.</p>
+        </div>
+        <form id="form-partida">
+          <label>
+            Data
+            <input type="date" id="data-input" required>
+          </label>
+          <div class="score-row">
+            <label>
+              Gols dos Casados
+              <input type="number" id="gols-casados" min="0" step="1" required>
+            </label>
+            <span class="versus">x</span>
+            <label>
+              Gols dos Solteiros
+              <input type="number" id="gols-solteiros" min="0" step="1" required>
+            </label>
+          </div>
+          <p id="preview-resultado" class="preview">Informe o placar para ver o resultado.</p>
+          <button type="submit" class="btn btn-primary" id="btn-salvar">Salvar partida</button>
+        </form>
+      </article>
+    </section>
+
+    <section class="card">
+      <div class="card-head row-between">
+        <div>
+          <h2>Partidas do mês</h2>
+          <p class="muted">Histórico da disputa atual</p>
+        </div>
+      </div>
+      <div id="lista-partidas" class="matches"></div>
+    </section>
+
+    <section class="card close-card">
+      <div class="card-head">
+        <h2>Encerramento mensal</h2>
+        <p class="muted">Declara o campeão, registra o histórico e zera a classificação.</p>
+      </div>
+      <ul class="checklist">
+        <li>Declarar o campeão do mês.</li>
+        <li>Registrar o histórico.</li>
+        <li>Zerar a classificação.</li>
+        <li>Iniciar um novo campeonato no mês seguinte.</li>
+      </ul>
+      <button type="button" class="btn btn-accent" id="btn-encerrar">Encerrar campeonato do mês</button>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Histórico de campeões</h2>
+        <p class="muted">Meses já encerrados</p>
+      </div>
+      <div id="lista-historico" class="history"></div>
+    </section>
+
+    <section class="card regulation">
+      <div class="card-head row-between">
+        <h2>Regulamento oficial</h2>
+        <span class="badge badge-done">Finalizado</span>
+      </div>
+
+      <div class="team-pills">
+        <span class="pill pill-casados">Casados</span>
+        <span class="pill pill-solteiros">Solteiros</span>
+      </div>
+
+      <h3>1. Participantes</h3>
+      <ul>
+        <li>Dois times fixos: Casados e Solteiros.</li>
+        <li>Quantidade ilimitada de partidas.</li>
+      </ul>
+
+      <h3>2. Pontuação</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Resultado</th>
+              <th class="right">Pontos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vitória</td>
+              <td class="right">3</td>
+            </tr>
+            <tr>
+              <td>Empate</td>
+              <td class="right">1 para cada</td>
+            </tr>
+            <tr>
+              <td>Derrota</td>
+              <td class="right">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>3. Critérios de classificação</h3>
+      <ol>
+        <li>Maior número de pontos.</li>
+        <li>Maior saldo de gols.</li>
+        <li>Maior número de vitórias.</li>
+        <li>Persistindo o empate, os dois times serão declarados campeões.</li>
+      </ol>
+
+      <h3>4. Encerramento mensal</h3>
+      <ul>
+        <li>Declarar o campeão do mês.</li>
+        <li>Registrar o histórico.</li>
+        <li>Zerar a classificação.</li>
+        <li>Iniciar um novo campeonato no mês seguinte.</li>
+      </ul>
+
+      <h3>5. Registro das partidas</h3>
+      <p>Cada partida deverá armazenar:</p>
+      <ul>
+        <li>Data.</li>
+        <li>Gols dos Casados.</li>
+        <li>Gols dos Solteiros.</li>
+        <li>Resultado calculado automaticamente.</li>
+      </ul>
+    </section>
+  </div>
+
+  <div id="modal-confirmacao" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="modal-box">
+      <h3 id="modal-titulo">Encerrar o mês?</h3>
+      <p id="modal-texto"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="btn-cancelar-encerrar">Cancelar</button>
+        <button type="button" class="btn btn-accent" id="btn-confirmar-encerrar">Confirmar encerramento</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
